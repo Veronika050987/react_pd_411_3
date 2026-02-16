@@ -1,6 +1,6 @@
 import './Main.css';
 import React from "react";
-import Movies from '../components/MovieList.js';
+import Preloader from '../components/Preloader.js';
 import MovieList from '../components/MovieList.js';
 
 class Main extends React.Component
@@ -20,7 +20,9 @@ class Main extends React.Component
         return(
             <div className='main'>
                 <div className='wrap'>
-                    <MovieList movies={this.state.movies} />
+                    {
+                        this.state.movies.length === 0 ? <Preloader /> : <MovieList movies={this.state.movies} />
+                    }
                 </div>
             </div>
         )

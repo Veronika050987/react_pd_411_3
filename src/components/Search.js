@@ -46,7 +46,7 @@ class Search extends React.Component
     render()
     {
         let limit = 10;
-        let totalpages = Math.ceil(this.props.totalCount / limit);
+        let totalPages = Math.ceil(this.props.totalCount / limit);
         const lastIndex = totalPages <=10 ? totalPages + 1 : this.state.page + limit;
         const firstIndex = totalPages <=10 ? lastIndex - limit + lastIndex + 1 : lastIndex - limit;
         return(

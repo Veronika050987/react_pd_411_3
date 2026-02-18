@@ -4,10 +4,30 @@ import React from "react";
 class Search extends React.Component
 {
     state =
-    {
-        search: "",
-        type: "all"
-    }
+        {
+            search: "",
+            type: "all",
+            page: 1
+        }
+        prevPage = () =>
+        {
+            this.setState
+            (
+                () => (this.state.page > 1 ? {page: this.state.page - 1} : {page: 1}),
+                () => {this.props.searchMovie(this.state.search, this.state.type, this.state.page)}
+            )
+        }
+        nextPage = () =>
+        {
+            this.setState
+            (
+                () => ({page: this.state.page + 1}),
+                () => 
+                {
+                    this.props.searchMovie(this.state.search, this.state.type, this.state.page)
+                }
+            )
+        }
     handleKey = (event) =>
     {
         if(event.key === 'Enter')
@@ -25,6 +45,10 @@ class Search extends React.Component
     }
     render()
     {
+        let limit = 10;
+        let totalpages = Math.ceil(this.props.totalCount / limit);
+        const lastIndex = totalPages <=10 ? totalPages + 1 : this.state.page + limit;
+        const firstIndex = totalPages <=10 ? lastIndex - limit + lastIndex + 1 : lastIndex - limit;
         return(
             <>
                 <div className='search'>
@@ -56,6 +80,11 @@ class Search extends React.Component
                             <input type ='radio' name='type' id="game" data-type="game" checked={this.state.type === 'game'} onChange={this.handleFilter}/>
                             <label for="game">Game</label>
                         </div>
+                </div>
+                <div className='navigator'>
+                    <button className='btn' onClick={this.prevPage}>Prev</button>
+                    <button className='btn' onClick={this.nextPage}>Next</button>
+
                 </div>
             </>
         )

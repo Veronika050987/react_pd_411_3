@@ -7,13 +7,15 @@ function MovieList(props)
     return(
         <div className='movies'>
             {
-                movies.map
+                movies.length ? movies.map
                 (
+                    
                     movie => 
                     {
                         return <Movie key={movie.imdbID} {...movie}/>
                     }
                 )
+                : <h2>Nothing found (◕⌒◕)</h2> 
             }
         </div>
     )

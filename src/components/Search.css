@@ -56,8 +56,9 @@
 }
 
 .page-num {
-    background-color: #f4f4f4;
-    border: 1px solid #ccc;
+    background-color: #E0FFFF;
+    border: 1px solid #DDA0DD;
+    color: #8A2BE2;
     cursor: pointer;
 }
 
@@ -76,5 +77,6 @@
     text-align: center;
     margin-top: -10px;
     font-size: 0.9em;
-    color: #666;
+    font-weight: bold;
+    color: #7B68EE;
 }
